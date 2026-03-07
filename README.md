@@ -1,1 +1,5 @@
-
+![General metrics](metrics.general.svg)
+![Activity & notable contributions](metrics.activity.svg)
+![WakaTime stats](metrics.wakatime.svg)
+![Pinned repositories](metrics.repositories.svg)
+![Music](metrics.music.svg)
