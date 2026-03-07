@@ -8,9 +8,10 @@ on:
 
 jobs:
 
-  # ─── General stats + base header ───────────────────────────────────────────
   general:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - uses: lowlighter/metrics@latest
         with:
@@ -31,9 +32,10 @@ jobs:
           plugin_achievements_limit: 6
           filename: metrics.general.svg
 
-  # ─── Activity & community ──────────────────────────────────────────────────
   activity:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - uses: lowlighter/metrics@latest
         with:
@@ -51,9 +53,10 @@ jobs:
           plugin_notable_repositories: yes
           filename: metrics.activity.svg
 
-  # ─── WakaTime coding stats ─────────────────────────────────────────────────
   wakatime:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - uses: lowlighter/metrics@latest
         with:
@@ -71,9 +74,10 @@ jobs:
           plugin_wakatime_user: current
           filename: metrics.wakatime.svg
 
-  # ─── Music (Spotify) ───────────────────────────────────────────────────────
   music:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - uses: lowlighter/metrics@latest
         with:
@@ -89,9 +93,10 @@ jobs:
           plugin_music_limit: 4
           filename: metrics.music.svg
 
-  # ─── Pinned repositories ───────────────────────────────────────────────────
   repositories:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - uses: lowlighter/metrics@latest
         with:
