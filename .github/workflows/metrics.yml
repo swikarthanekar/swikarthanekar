@@ -1,14 +1,15 @@
 name: Metrics
 on:
   schedule:
-    - cron: "0 */6 * * *"  # runs every 6 hours
-  workflow_dispatch:        # lets you trigger it manually too
+    - cron: "0 */6 * * *"
+  workflow_dispatch:
   push:
     branches: ["main"]
 
 jobs:
 
-  isocalendar:
+  # ─── General stats + base header ───────────────────────────────────────────
+  general:
     runs-on: ubuntu-latest
     steps:
       - uses: lowlighter/metrics@latest
@@ -16,41 +17,21 @@ jobs:
           token: ${{ secrets.METRICS_TOKEN }}
           user: swikarthanekar
           template: classic
-          base: ""
+          base: header, activity, community, repositories, metadata
           config_timezone: Asia/Kolkata
+          config_display: large
           plugin_isocalendar: yes
           plugin_isocalendar_duration: full-year
-          filename: metrics.isocalendar.svg
-
-  languages:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: lowlighter/metrics@latest
-        with:
-          token: ${{ secrets.METRICS_TOKEN }}
-          user: swikarthanekar
-          template: classic
-          base: ""
-          config_timezone: Asia/Kolkata
           plugin_languages: yes
           plugin_languages_indepth: yes
           plugin_languages_details: lines, percentage
-          filename: metrics.languages.svg
-
-  achievements:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: lowlighter/metrics@latest
-        with:
-          token: ${{ secrets.METRICS_TOKEN }}
-          user: swikarthanekar
-          template: classic
-          base: ""
-          config_timezone: Asia/Kolkata
+          plugin_languages_limit: 8
           plugin_achievements: yes
           plugin_achievements_display: detailed
-          filename: metrics.achievements.svg
+          plugin_achievements_limit: 6
+          filename: metrics.general.svg
 
+  # ─── Activity & community ──────────────────────────────────────────────────
   activity:
     runs-on: ubuntu-latest
     steps:
@@ -62,10 +43,15 @@ jobs:
           base: ""
           config_timezone: Asia/Kolkata
           plugin_activity: yes
-          plugin_activity_limit: 5
+          plugin_activity_limit: 7
           plugin_activity_days: 14
+          plugin_activity_filter: push, pr, issue, release, review
+          plugin_notable: yes
+          plugin_notable_indepth: yes
+          plugin_notable_repositories: yes
           filename: metrics.activity.svg
 
+  # ─── WakaTime coding stats ─────────────────────────────────────────────────
   wakatime:
     runs-on: ubuntu-latest
     steps:
@@ -79,9 +65,13 @@ jobs:
           plugin_wakatime: yes
           plugin_wakatime_token: ${{ secrets.WAKATIME_TOKEN }}
           plugin_wakatime_days: 7
-          plugin_wakatime_sections: time, languages, editors
+          plugin_wakatime_limit: 5
+          plugin_wakatime_sections: time, languages, editors, projects
+          plugin_wakatime_url: https://wakatime.com
+          plugin_wakatime_user: current
           filename: metrics.wakatime.svg
 
+  # ─── Music (Spotify) ───────────────────────────────────────────────────────
   music:
     runs-on: ubuntu-latest
     steps:
@@ -98,3 +88,18 @@ jobs:
           plugin_music_mode: recent
           plugin_music_limit: 4
           filename: metrics.music.svg
+
+  # ─── Pinned repositories ───────────────────────────────────────────────────
+  repositories:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: lowlighter/metrics@latest
+        with:
+          token: ${{ secrets.METRICS_TOKEN }}
+          user: swikarthanekar
+          template: classic
+          base: ""
+          config_timezone: Asia/Kolkata
+          plugin_repositories: yes
+          plugin_repositories_pinned: 4
+          filename: metrics.repositories.svg
