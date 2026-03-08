@@ -1,3 +1,7 @@
+# Licensed under The Unlicense
+# Based on lowlighter/metrics — https://github.com/lowlighter/metrics
+# Profile: swikarthanekar
+
 name: Metrics
 on:
   schedule: [{cron: "0 16 * * *"}]
@@ -6,82 +10,85 @@ on:
 jobs:
   metrics:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
     steps:
 
-      - name: 🦑 General
+      # ─────────────────────────────────────────────────────────────
+      # 1. MEDIAS — Spotify playlist + WakaTime coding stats
+      # ─────────────────────────────────────────────────────────────
+      - name: 🦑 Medias
         if: ${{ success() || failure() }}
         uses: lowlighter/metrics@latest
         with:
-          filename: general.svg
-          token: ${{ secrets.METRICS_TOKEN }}
-          base: header
-          config_order: base.header, isocalendar, languages, topics
+          filename: medias.svg
+          token: ${{ secrets.TOKEN }}
+          base: ""
+          config_order: music, wakatime
           output_action: gist
           committer_gist: ${{ secrets.GIST }}
-          plugin_isocalendar: yes
-          plugin_isocalendar_duration: full-year
-          plugin_languages: yes
-          plugin_languages_indepth: no
-          plugin_languages_details: percentage
-          plugin_languages_limit: 6
-          plugin_topics: yes
-          plugin_topics_limit: 12
-          plugin_topics_mode: icons
 
+          # 🎵 Spotify — random tracks from your playlist (no Premium needed)
+          plugin_music: yes
+          plugin_music_playlist: https://open.spotify.com/embed/playlist/5J6lKHUMgGaCqRB7xjYlYr
+          plugin_music_limit: 9
+
+          # ⏰ WakaTime — coding time breakdown
+          plugin_wakatime: yes
+          plugin_wakatime_token: ${{ secrets.WAKATIME_TOKEN }}
+          plugin_wakatime_days: 7
+          plugin_wakatime_sections: time, projects, projects-graphs, languages, languages-graphs, editors, os
+          plugin_wakatime_limit: 5
+
+      # ─────────────────────────────────────────────────────────────
+      # 2. ACHIEVEMENTS — unlocked GitHub achievements + fortune
+      # ─────────────────────────────────────────────────────────────
       - name: 🦑 Achievements
         if: ${{ success() || failure() }}
         uses: lowlighter/metrics@latest
         with:
           filename: achievements.svg
-          token: ${{ secrets.METRICS_TOKEN }}
+          token: ${{ secrets.TOKEN }}
           base: ""
           output_action: gist
           committer_gist: ${{ secrets.GIST }}
           plugin_achievements: yes
           plugin_achievements_display: compact
+          plugin_fortune: yes
 
-      - name: 🦑 Activity
+      # ─────────────────────────────────────────────────────────────
+      # 3. GENERAL — header + isometric calendar + languages +
+      #              notable contributions + discussions + topics
+      # ─────────────────────────────────────────────────────────────
+      - name: 🦑 General
         if: ${{ success() || failure() }}
         uses: lowlighter/metrics@latest
         with:
-          filename: activity.svg
-          token: ${{ secrets.METRICS_TOKEN }}
-          base: ""
+          filename: general.svg
+          token: ${{ secrets.TOKEN }}
+          base: header
+          base_indepth: yes
+          config_order: base.header, isocalendar, languages, notable, discussions, topics
           output_action: gist
           committer_gist: ${{ secrets.GIST }}
-          plugin_activity: yes
-          plugin_activity_limit: 7
-          plugin_activity_days: 14
-          plugin_activity_filter: push, pr, issue, release, review
 
-      - name: 🦑 WakaTime
-        if: ${{ success() || failure() }}
-        uses: lowlighter/metrics@latest
-        with:
-          filename: wakatime.svg
-          token: ${{ secrets.METRICS_TOKEN }}
-          base: ""
-          output_action: gist
-          committer_gist: ${{ secrets.GIST }}
-          plugin_wakatime: yes
-          plugin_wakatime_token: ${{ secrets.WAKATIME_TOKEN }}
-          plugin_wakatime_days: 7
-          plugin_wakatime_limit: 5
-          plugin_wakatime_sections: time, languages, editors, projects
+          # 📅 Isometric contribution calendar (full year)
+          plugin_isocalendar: yes
+          plugin_isocalendar_duration: full-year
 
-      - name: 🦑 Music
-        if: ${{ success() || failure() }}
-        uses: lowlighter/metrics@latest
-        with:
-          filename: music.svg
-          token: ${{ secrets.METRICS_TOKEN }}
-          base: ""
-          output_action: gist
-          committer_gist: ${{ secrets.GIST }}
-          plugin_music: yes
-          plugin_music_provider: spotify
-          plugin_music_token: ${{ secrets.SPOTIFY_TOKENS }}
-          plugin_music_mode: recent
-          plugin_music_limit: 4
+          # 🈷️ Languages — most used + recently used with line counts
+          plugin_languages: yes
+          plugin_languages_ignored: html, css, tex, less, dockerfile, makefile, qmake, lex, cmake, shell, gnuplot, vue, scala, c, c++, python, ejs
+          plugin_languages_details: lines, bytes-size, percentage
+          plugin_languages_sections: most-used, recently-used
+          plugin_languages_indepth: yes
+          plugin_languages_limit: 2
+
+          # 📌 Starred topic icons (go star topics on github.com/topics to populate)
+          plugin_topics: yes
+          plugin_topics_limit: 0
+          plugin_topics_mode: icons
+
+          # 🎩 Notable contributions to other repos/orgs
+          plugin_notable: yes
+
+          # 💬 GitHub Discussions stats
+          plugin_discussions: yes
