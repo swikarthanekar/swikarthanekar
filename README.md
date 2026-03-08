@@ -1,13 +1,8 @@
-[<img align="left" width="495" alt="General metrics" src="https://gist.githubusercontent.com/swikarthanekar/5313f836e2a6ac622ba1043ed4ac2b49/raw/general.svg">](#)
-[<img align="right" width="495" alt="Achievements" src="https://gist.githubusercontent.com/swikarthanekar/5313f836e2a6ac622ba1043ed4ac2b49/raw/achievements.svg">](#)
+[<img align="left" width="390" alt="🦑" src="https://gist.githubusercontent.com/swikarthanekar/4a39d6c3ca28a952a14be67493f6c6a3_ID/raw/general.svg">](#)
+[<img align="right" width="390" alt="🦑" src="https://gist.githubusercontent.com/swikarthanekar/4a39d6c3ca28a952a14be67493f6c6a3_ID/raw/medias.svg">](#)
 
-[<img width="100%" height="4" src="https://gist.githubusercontent.com/swikarthanekar/5313f836e2a6ac622ba1043ed4ac2b49/raw/general.svg" style="opacity:0">](#)
+[<img align="left" width="390" alt="🦑" src="https://gist.githubusercontent.com/swikarthanekar/4a39d6c3ca28a952a14be67493f6c6a3_ID/raw/achievements.svg">](#)
 
-[<img align="left" width="495" alt="Activity" src="https://gist.githubusercontent.com/swikarthanekar/5313f836e2a6ac622ba1043ed4ac2b49/raw/activity.svg">](#)
-[<img align="right" width="495" alt="WakaTime" src="https://gist.githubusercontent.com/swikarthanekar/5313f836e2a6ac622ba1043ed4ac2b49/raw/wakatime.svg">](#)
-
-[<img width="100%" height="4" src="https://gist.githubusercontent.com/swikarthanekar/5313f836e2a6ac622ba1043ed4ac2b49/raw/general.svg" style="opacity:0">](#)
-
-[<img width="100%" alt="Music" src="https://gist.githubusercontent.com/swikarthanekar/5313f836e2a6ac622ba1043ed4ac2b49/raw/music.svg">](#)
+[<img width="100%" height="1" alt="🦑" src="https://gist.githubusercontent.com/swikarthanekar/4a39d6c3ca28a952a14be67493f6c6a3_ID/raw/placeholder.svg">](#)
 
 <sub>These infographics were generated using [lowlighter/metrics](https://github.com/lowlighter/metrics)</sub>
