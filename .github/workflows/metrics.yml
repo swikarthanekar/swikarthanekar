@@ -26,21 +26,20 @@ jobs:
           output_action: gist
           committer_gist: ${{ secrets.GIST }}
 
-          # 🎵 Spotify — random tracks from playlist
+          # 🎵 Spotify — random tracks from your playlist (no Premium needed)
           plugin_music: yes
           plugin_music_playlist: https://open.spotify.com/embed/playlist/5J6lKHUMgGaCqRB7xjYlYr
           plugin_music_limit: 9
 
-          # ⏰ WakaTime — bumped to 30 days so recent activity is captured
+          # ⏰ WakaTime — coding time breakdown
           plugin_wakatime: yes
           plugin_wakatime_token: ${{ secrets.WAKATIME_TOKEN }}
-          plugin_wakatime_days: 30
+          plugin_wakatime_days: 7
           plugin_wakatime_sections: time, projects, projects-graphs, languages, languages-graphs, editors, os
           plugin_wakatime_limit: 5
 
       # ─────────────────────────────────────────────────────────────
-      # 2. ACHIEVEMENTS
-      # FIX: removed plugin_fortune — was causing the unexpected error
+      # 2. ACHIEVEMENTS — unlocked GitHub achievements + fortune
       # ─────────────────────────────────────────────────────────────
       - name: 🦑 Achievements
         if: ${{ success() || failure() }}
@@ -53,9 +52,11 @@ jobs:
           committer_gist: ${{ secrets.GIST }}
           plugin_achievements: yes
           plugin_achievements_display: compact
+          plugin_fortune: yes
 
       # ─────────────────────────────────────────────────────────────
-      # 3. GENERAL — header + isometric calendar + languages + topics
+      # 3. GENERAL — header + isometric calendar + languages +
+      #              notable contributions + discussions + topics
       # ─────────────────────────────────────────────────────────────
       - name: 🦑 General
         if: ${{ success() || failure() }}
@@ -65,7 +66,7 @@ jobs:
           token: ${{ secrets.TOKEN }}
           base: header
           base_indepth: yes
-          config_order: base.header, isocalendar, languages, topics
+          config_order: base.header, isocalendar, languages, notable, discussions, topics
           output_action: gist
           committer_gist: ${{ secrets.GIST }}
 
@@ -73,21 +74,21 @@ jobs:
           plugin_isocalendar: yes
           plugin_isocalendar_duration: full-year
 
-          # 🈷️ Languages — indepth OFF to fix timeout/partial results warning
+          # 🈷️ Languages — most used + recently used with line counts
           plugin_languages: yes
           plugin_languages_ignored: html, css, tex, less, dockerfile, makefile, qmake, lex, cmake, shell, gnuplot, vue, scala, c, c++, python, ejs
           plugin_languages_details: bytes-size, percentage
           plugin_languages_sections: most-used
-          plugin_languages_indepth: no
+          plugin_languages_indepth: yes
           plugin_languages_limit: 8
 
-          # 📌 Starred topic icons (go to github.com/topics and star topics to populate)
+          # 📌 Starred topic icons (go star topics on github.com/topics to populate)
           plugin_topics: yes
           plugin_topics_limit: 0
           plugin_topics_mode: icons
 
-          # 🎩 Notable contributions — uncomment when you have some
-          # plugin_notable: yes
+          # 🎩 Notable contributions to other repos/orgs
+          plugin_notable: yes
 
-          # 💬 GitHub Discussions — uncomment when you have some
-          # plugin_discussions: yes
+          # 💬 GitHub Discussions stats
+          plugin_discussions: yes
