@@ -52,6 +52,7 @@ jobs:
           committer_gist: ${{ secrets.GIST }}
           plugin_achievements: yes
           plugin_achievements_display: compact
+          plugin_achievements_threshold: C
           plugin_fortune: yes
 
       # ─────────────────────────────────────────────────────────────
@@ -74,7 +75,7 @@ jobs:
           plugin_isocalendar: yes
           plugin_isocalendar_duration: full-year
 
-          # 🈷️ Languages — most used + recently used with line counts
+          # 🈷️ Languages — most used with byte size and percentage
           plugin_languages: yes
           plugin_languages_ignored: html, css, tex, less, dockerfile, makefile, qmake, lex, cmake, shell, gnuplot, vue, scala, c, c++, python, ejs
           plugin_languages_details: bytes-size, percentage
@@ -82,7 +83,7 @@ jobs:
           plugin_languages_indepth: yes
           plugin_languages_limit: 8
 
-          # 📌 Starred topic icons (go star topics on github.com/topics to populate)
+          # 📌 Starred topic icons
           plugin_topics: yes
           plugin_topics_limit: 0
           plugin_topics_mode: icons
