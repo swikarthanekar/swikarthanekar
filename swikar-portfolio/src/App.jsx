@@ -1,3 +1,4 @@
+import { Analytics } from "@vercel/analytics/next" /* this is for the vercel analytics*/
 import { BrowserRouter } from 'react-router-dom';
 import {
   About,
@@ -40,6 +41,7 @@ const App = () => {
         <div className="relative z-0">
           <Contact />
         </div>
+        <Analytics />
       </div>
     </BrowserRouter>
   );
