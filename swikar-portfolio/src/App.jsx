@@ -1,4 +1,4 @@
-import { Analytics } from "@vercel/analytics/next" /* this is for the vercel analytics*/
+import { Analytics } from "@vercel/analytics/react" /* this is for the vercel analytics*/
 import { BrowserRouter } from 'react-router-dom';
 import {
   About,
