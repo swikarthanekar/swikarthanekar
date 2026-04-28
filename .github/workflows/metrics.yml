@@ -1,7 +1,3 @@
-# Licensed under The Unlicense
-# Based on lowlighter/metrics — https://github.com/lowlighter/metrics
-# Profile: swikarthanekar
-
 name: Metrics
 on:
   schedule: [{cron: "0 */6 * * *"}]
