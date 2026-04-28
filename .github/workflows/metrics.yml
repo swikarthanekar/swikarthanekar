@@ -8,9 +8,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
 
-      # ─────────────────────────────────────────────────────────────
-      # 1. MEDIAS — Spotify playlist + WakaTime coding stats
-      # ─────────────────────────────────────────────────────────────
       - name: 🦑 Medias
         if: ${{ success() || failure() }}
         uses: lowlighter/metrics@latest
@@ -22,21 +19,16 @@ jobs:
           output_action: gist
           committer_gist: ${{ secrets.GIST }}
 
-          # 🎵 Spotify — random tracks from your playlist (no Premium needed)
           plugin_music: yes
           plugin_music_playlist: https://open.spotify.com/embed/playlist/5J6lKHUMgGaCqRB7xjYlYr
           plugin_music_limit: 9
 
-          # ⏰ WakaTime — coding time breakdown
           plugin_wakatime: yes
           plugin_wakatime_token: ${{ secrets.WAKATIME_TOKEN }}
           plugin_wakatime_days: "30"
           plugin_wakatime_sections: time, projects, projects-graphs, languages, languages-graphs, editors, os
           plugin_wakatime_limit: 5
 
-      # ─────────────────────────────────────────────────────────────
-      # 2. ACHIEVEMENTS — unlocked GitHub achievements + fortune
-      # ─────────────────────────────────────────────────────────────
       - name: 🦑 Achievements
         if: ${{ success() || failure() }}
         uses: lowlighter/metrics@latest
@@ -51,10 +43,6 @@ jobs:
           plugin_achievements_threshold: C
           plugin_fortune: yes
 
-      # ─────────────────────────────────────────────────────────────
-      # 3. GENERAL — header + isometric calendar + languages +
-      #              notable contributions + discussions + topics
-      # ─────────────────────────────────────────────────────────────
       - name: 🦑 General
         if: ${{ success() || failure() }}
         uses: lowlighter/metrics@latest
@@ -67,11 +55,9 @@ jobs:
           output_action: gist
           committer_gist: ${{ secrets.GIST }}
 
-          # 📅 Isometric contribution calendar (full year)
           plugin_isocalendar: yes
           plugin_isocalendar_duration: full-year
 
-          # 🈷️ Languages — most used with byte size and percentage
           plugin_languages: yes
           plugin_languages_ignored: html, css, tex, less, dockerfile, makefile, qmake, lex, cmake, shell, gnuplot, vue, scala, c, c++, python, ejs
           plugin_languages_details: bytes-size, percentage
@@ -79,13 +65,10 @@ jobs:
           plugin_languages_indepth: yes
           plugin_languages_limit: 8
 
-          # 📌 Starred topic icons
           plugin_topics: yes
           plugin_topics_limit: 0
           plugin_topics_mode: icons
 
-          # 🎩 Notable contributions to other repos/orgs
           plugin_notable: yes
 
-          # 💬 GitHub Discussions stats
           plugin_discussions: yes
