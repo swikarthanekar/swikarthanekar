@@ -17,7 +17,7 @@ jobs:
           output_action: gist
           committer_gist: ${{ secrets.GIST }}
           plugin_music: yes
-          plugin_music_playlist: https://open.spotify.com/embed/playlist/5J6lKHUMgGaCqRB7xjYlYr
+          plugin_music_playlist: https://open.spotify.com/playlist/5J6lKHUMgGaCqRB7xjYlYr?si=0TfeVTsGQd2OjZTr7je7Ig
           plugin_music_limit: 9
           plugin_wakatime: yes
           plugin_wakatime_token: ${{ secrets.WAKATIME_TOKEN }}
