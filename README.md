@@ -7,4 +7,4 @@
 
 [<img align="right" alt="🦑" src="https://repository-images.githubusercontent.com/798797308/e6bc0b7b-a810-413f-b57f-13c8c983b203">](#)
 
-
+<sub>Infographics generated using [lowlighter/metrics](https://github.com/lowlighter/metrics) — thanks [@lowlighter](https://github.com/lowlighter)! 🦑</sub>
