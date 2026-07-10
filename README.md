@@ -1,3 +1,6 @@
+<!-- Infographics generated using https://github.com/lowlighter/metrics — credits to @lowlighter -->
+
+
 [<img align="left" width="390" alt="🦑" src="https://gist.githubusercontent.com/swikarthanekar/4a39d6c3ca28a952a14be67493f6c6a3/raw/general.svg">](#)
 [<img align="right" width="390" alt="🦑" src="https://gist.githubusercontent.com/swikarthanekar/4a39d6c3ca28a952a14be67493f6c6a3/raw/medias.svg">](#)
 
@@ -6,5 +9,3 @@
 [<img width="100%" height="1" alt="🦑" src="https://gist.githubusercontent.com/swikarthanekar/4a39d6c3ca28a952a14be67493f6c6a3/raw/placeholder.svg">](#)
 
 [<img align="right" alt="🦑" src="https://repository-images.githubusercontent.com/798797308/e6bc0b7b-a810-413f-b57f-13c8c983b203">](#)
-
-<sub>Infographics generated using [lowlighter/metrics](https://github.com/lowlighter/metrics) — thanks [@lowlighter](https://github.com/lowlighter)! 🦑</sub>
